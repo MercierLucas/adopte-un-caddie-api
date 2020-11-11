@@ -1,6 +1,10 @@
 <?php
 
+// entities
 require_once("Entities/Product.php");
+require_once("Entities/SellerProduct.php");
+
+// model
 require_once("Models/ProductModel.php");
 
 class ProductController
@@ -23,7 +27,31 @@ class ProductController
             case "getBy":
                 $this->getBy($param);
                 break;
+
+            case "getSellers":
+                $this->compare($param);
+                break;
         }
+    }
+
+    private function send($obj)
+    {
+        if($obj != null)
+        {
+            ResponseSerializer::Send($obj);
+        }
+        else
+        {
+            ResponseSerializer::RaiseError("Sellers not found not found");
+        }
+    }
+
+    public function compare($param)
+    {
+        $intParam = intval($param);
+        $products = $this->productModel->getSellers($intParam);
+
+        $this->send($products);
     }
 
     public function getBy($param)
@@ -43,14 +71,7 @@ class ProductController
     {
         $product = $this->productModel->getByID($param);
 
-        if($product != null)
-        {
-            ResponseSerializer::Send($product);
-        }
-        else
-        {
-            ResponseSerializer::RaiseError("Product not found");
-        }
+        $this->send($product);
 
     }
 
@@ -58,13 +79,6 @@ class ProductController
     {
         $products = $this->productModel->getByName($param);
 
-        if($products != null)
-        {
-            ResponseSerializer::Send($products);
-        }
-        else
-        {
-            ResponseSerializer::RaiseError("Product not found");
-        }
+        $this->send($products);
     }
 }

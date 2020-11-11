@@ -45,7 +45,7 @@ if(array_key_exists($object,$routes))
 }
 else
 {
-    ReponseSerializer::RaiseError("Route not found");
+    ResponseSerializer::RaiseError("Route not found");
 }
 
 

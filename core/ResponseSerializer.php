@@ -19,7 +19,7 @@ class ResponseSerializer
         echo json_encode(
             array(
                 "message" => "ok",
-                "results" => [$obj]
+                "results" => $obj
             )
         );
     }

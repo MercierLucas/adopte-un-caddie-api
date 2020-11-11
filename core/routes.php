@@ -2,5 +2,6 @@
 
 
 $routes = array(
-    "products" => "ProductController"
+    "products" => "ProductController",
+    "shops" => "ShopController"
 );
