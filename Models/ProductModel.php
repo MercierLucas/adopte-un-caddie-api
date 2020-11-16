@@ -72,6 +72,7 @@ class ProductModel
                 join shop on shop.uid = product_shop_xref.shop_uid
                 where product.uid = {$productID}";
 
+        //echo $sql;
         $ans=$this->bdd->query($sql);
         $result = $ans->fetchall(PDO::FETCH_ASSOC);
 
