@@ -9,7 +9,8 @@ CREATE PROCEDURE input_product(
     IN product_desc VARCHAR(255),
     IN price FLOAT,
     IN quantity VARCHAR(255),
-    IN shop_uid INT
+    IN shop_uid INT,
+    IN category_uid INT
 )
 BEGIN
     DECLARE product_uid int;
@@ -20,7 +21,7 @@ BEGIN
         INSERT INTO `product`
             (`uid`, `name`, `description`, `url`, `category_uid`) 
             VALUES 
-            (NULL, product_name, product_desc, '', 0);
+            (NULL, product_name, product_desc, '', category_uid);
     end if;
     select product.uid into product_uid
         from product where product.name = product_name;

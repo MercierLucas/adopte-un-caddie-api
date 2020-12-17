@@ -1,4 +1,4 @@
 <?php
 
 define("ROOTDIR","/adopte_un_caddie/");
-define("DOMAIN","/");
+define("DOMAIN","https://adopte-un-caddie-api.herokuapp.com/");
